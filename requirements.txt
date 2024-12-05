@@ -1,0 +1,6 @@
+trimesh
+numpy
+scipy
+plotly
+tqdm
+pytest
