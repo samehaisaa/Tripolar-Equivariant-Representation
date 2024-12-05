@@ -9,7 +9,7 @@ def plot_bipolar_contours(vertices, faces, sum_distances, seeds, target_distance
         i=faces[:, 0], j=faces[:, 1], k=faces[:, 2],
         intensity=sum_distances,
         colorscale='Viridis',
-        showscale=True,
+        showscale=False,
         opacity=0.8,showlegend=False
     )
     seed_markers = [
