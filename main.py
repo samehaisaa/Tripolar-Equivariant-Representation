@@ -10,9 +10,9 @@ def visualize_mesh(vertices, faces, sum_distances, seeds, target_distances):
 
 # Streamlit app starts here
 st.title("3D Mesh Visualization with Geodesic Distances")
-
+filepath = './F0001_AN01WH_F3Dsur.obj'  # Replace with your path
+mesh_file = filepath  # Replace with your actual file path
 # Local file uploader for .obj mesh
-mesh_file = st.file_uploader("Upload your 3D Mesh (.obj file)", type=["obj"])
 
 if mesh_file is not None:
     # Load the mesh from the uploaded file
