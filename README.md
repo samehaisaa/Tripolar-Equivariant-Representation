@@ -16,7 +16,7 @@ This project is a Python-based tool to compute **geodesic distances** on 3D mesh
 ## **Project Structure**
 ```plaintext
 project-root/
-├── src/
+├── mesh_processing	/
 │   ├── __init__.py          # Marks src as a package
 │   ├── mesh_loader.py       # Functions for loading .obj meshes
 │   ├── geodesic_distance.py # Geodesic distance computation
