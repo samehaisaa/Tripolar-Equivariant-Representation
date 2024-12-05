@@ -20,7 +20,7 @@ if mesh_file is not None:
     vertices, faces = load_obj_mesh(mesh_file)
 
     # Input seed points (indices of the mesh vertices)
-    seed_input = st.text_input("Enter seed points (comma-separated, e.g., 13714,22526,22229)", "13714,22526,22229")
+    seed_input = st.text_input("Les indices des points de référence (e.g., 13714,22526,22229)", "13714,22526,22229")
     seeds = list(map(int, seed_input.split(",")))
 
     # Compute sum of distances (geodesic calculation)
