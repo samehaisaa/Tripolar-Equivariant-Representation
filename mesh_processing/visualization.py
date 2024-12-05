@@ -39,4 +39,4 @@ def plot_bipolar_contours(vertices, faces, sum_distances, seeds, target_distance
         width=800, height=600
     )
     fig = go.Figure(data=[mesh3d] + seed_markers + contours, layout=layout)
-    fig.show()
+    return fig
