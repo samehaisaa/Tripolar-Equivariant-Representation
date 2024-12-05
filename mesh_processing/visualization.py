@@ -10,14 +10,14 @@ def plot_bipolar_contours(vertices, faces, sum_distances, seeds, target_distance
         intensity=sum_distances,
         colorscale='Viridis',
         showscale=True,
-        opacity=0.8
+        opacity=0.8,showlegend=False
     )
     seed_markers = [
         go.Scatter3d(
             x=[vertices[seed][0]], y=[vertices[seed][1]], z=[vertices[seed][2]],
             mode='markers',
             marker=dict(size=10, color='blue', symbol='circle'),
-            name=f"Seed Point {i+1}"
+            name=f"Seed Point {i+1}",showlegend=False
         )
         for i, seed in enumerate(seeds)
     ]
@@ -30,7 +30,7 @@ def plot_bipolar_contours(vertices, faces, sum_distances, seeds, target_distance
             x=selected_vertices[:, 0], y=selected_vertices[:, 1], z=selected_vertices[:, 2],
             mode='markers',
             marker=dict(size=2, color='red', symbol='circle'),
-            name=f"Contour at {target}"
+            name=f"Contour at {target}",showlegend=False
         ))
 
     layout = go.Layout(
