@@ -34,7 +34,7 @@ project-root/
 ├── .gitignore               # Ignore unnecessary files (e.g., large .obj files)
 ├── requirements.txt         # Required Python packages
 └── main.py                  # Main script to run the project
-
+---
 ## Results
 
 Below is an example of the geodesic distance visualization with contour lines plotted at different level sets:
@@ -42,3 +42,4 @@ Below is an example of the geodesic distance visualization with contour lines pl
 ![Geodesic Contours Visualization](results/level_sets.png)
 
 This image showcases how the sum of geodesic distances to three reference points is visualized on the 3D mesh, with contours highlighting specific distance thresholds. The points marked in blue are the seed points used for the geodesic calculations.
+---
