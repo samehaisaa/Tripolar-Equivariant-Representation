@@ -35,7 +35,7 @@ project-root/
 ├── requirements.txt         # Required Python packages
 └── main.py                  # Main script to run the project
 ---
-## Results
+## **Results**
 
 Below is an example of the geodesic distance visualization with contour lines plotted at different level sets:
 
