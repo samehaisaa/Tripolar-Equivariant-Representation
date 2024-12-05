@@ -29,7 +29,7 @@ def plot_bipolar_contours(vertices, faces, sum_distances, seeds, target_distance
         contours.append(go.Scatter3d(
             x=selected_vertices[:, 0], y=selected_vertices[:, 1], z=selected_vertices[:, 2],
             mode='markers',
-            marker=dict(size=4, color='red', symbol='circle'),
+            marker=dict(size=2, color='red', symbol='circle'),
             name=f"Contour at {target}"
         ))
 
