@@ -26,8 +26,8 @@ if mesh_file is not None:
     # Compute sum of distances (geodesic calculation)
     sum_distances = compute_sum_of_distances(vertices, faces, *seeds)
 
-    # Target distances for bipolar contours
-    target_distances = [200, 250, 300, 400, 450, 500, 550, 600]
+    target_distances_input = st.text_input("Les distances cibles pour les contours bipolaires (e.g., 200,250,300)", "200,250,300,400,450")
+    target_distances = list(map(int, target_distances_input.split(",")))
 
     # Visualize the 3D mesh with geodesic contours
     fig = visualize_mesh(vertices, faces, sum_distances, seeds, target_distances)
