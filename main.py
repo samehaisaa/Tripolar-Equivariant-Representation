@@ -9,10 +9,10 @@ def visualize_mesh(vertices, faces, sum_distances, seeds, target_distances):
     return fig
 
 # Streamlit app starts here
-st.title("3D Mesh Visualization with Geodesic Distances")
+st.title("Représentation Tripolaire Equivariante")
 
 # Allow the user to upload an OBJ file
-mesh_file = st.file_uploader("Upload your .obj file", type="obj")
+mesh_file = st.file_uploader("Télécharger votre maillage", type="obj")
 
 # Proceed only if a file is uploaded
 if mesh_file is not None:
