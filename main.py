@@ -21,7 +21,7 @@ def visualize_mesh(vertices, faces, sum_distances,diff_distances, seeds, target_
     return fig
 
 # Streamlit app starts here
-st.title("Représentation tripolaire équivariante")
+st.title("Représentation tripolaire équivariante 4D")
 
 
 
