@@ -78,8 +78,8 @@ if mesh_file is not None:
                 yaxis=dict(visible=True),
                 zaxis=dict(visible=True)
             ),
-            dragmode='orbit',
-            scene_dragmode="turntable"
+            dragmode='orbit'
+           # scene_dragmode="turntable"
         )
         progress_bar.progress(70+random_progress)
 
