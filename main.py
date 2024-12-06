@@ -43,7 +43,7 @@ if mesh_file is not None:
     with st.empty():
         # Simulate processing time (if needed)
         
-        loading_message.text("Chargement du maillage...")  # Update message
+        loading_message.text("Chargement du maillage ...")  # Update message
         vertices, faces = load_obj_mesh(mesh_file)
 	
         progress_bar.progress(40)  # Update progress to 20%
