@@ -27,31 +27,38 @@ st.title("Représentation tripolaire équivariante")
 
 # Allow the user to upload an OBJ file
 mesh_file = "./F0001_AN01WH_F3Dsur.obj"
+target_distances_sum_input = st.text_input("Les distances cibles pour les contours somme (e.g., 200,275,250,300)", "200,275,250,300")
+target_distances_sum = list(map(int, target_distances_sum_input.split(",")))
+
+target_distances_diff_input = st.text_input("Les distances cibles pour les contours différence (e.g.,20,30,45,70,90,110,130,140,160)", "20,30,45,70,90,110,130,140,160")
+target_distances_diff = list(map(int, target_distances_diff_input.split(",")))
+
+tolerance = st.slider("Tolérance pour les contours", min_value=0.0, max_value=1.0, value=0.85, step=0.01)
+loading_message = st.empty()
+loading_message.text("Chargement et traitement du maillage...")
 
 # Proceed only if a file is uploaded
 if mesh_file is not None:
-    # Display spinner while processing
-    with st.spinner('Chargement et traitement du maillage...'):
+    progress_bar = st.progress(0)  # Initialize progress bar
+    with st.empty():
         # Simulate processing time (if needed)
-        time.sleep(2)  # Remove this line when processing is done in real-time
         
-        # Load the mesh from the uploaded file
+        loading_message.text("Chargement du maillage...")  # Update message
         vertices, faces = load_obj_mesh(mesh_file)
+	
+        progress_bar.progress(40)  # Update progress to 20%
+        loading_message.text("Extraction des lignes de niveau ...")  # Update message
+
 
         seeds = [13714, 22526, 22229]  # Replace with your desired indices
         # Compute sum of distances (geodesic calculation)
         sum_distances = compute_sum_of_distances(vertices, faces, *seeds)
+        progress_bar.progress(80)
+        loading_message.text("Génération des contours ...")
+
         diff_distances = compute_diff_of_distances(vertices, faces, *seeds)
-
-        target_distances_sum_input = st.text_input("Les distances cibles pour les contours somme (e.g., 200,275,250,300)", "200,275,250,300")
-        target_distances_sum = list(map(int, target_distances_sum_input.split(",")))
-
-        target_distances_diff_input = st.text_input("Les distances cibles pour les contours différence (e.g.,20,30,45,70,90,110,130,140,160)", "20,30,45,70,90,110,130,140,160")
-        target_distances_diff = list(map(int, target_distances_diff_input.split(",")))
-
-        tolerance = st.slider("Tolérance pour les contours", min_value=0.0, max_value=1.0, value=0.85, step=0.01)
-
         # Visualize the 3D mesh with geodesic contours
+
         fig = visualize_mesh(vertices, faces, sum_distances, diff_distances, seeds, target_distances_sum, target_distances_diff, tolerance)
 
         fig.update_layout(
@@ -64,10 +71,15 @@ if mesh_file is not None:
             dragmode='orbit',
             scene_dragmode="turntable"
         )
+        progress_bar.progress(90)
 
-    # Show success message before displaying the plot
+        progress_bar.progress(100)
+        loading_message.text("Traitement terminé ! Affichage des résultats...")  # Update progress to 100% 
+        progress_bar.empty()     
+        loading_message.empty()
+
 
 
 
     # Display the Plotly figure in Streamlit
-    st.plotly_chart(fig)
+st.plotly_chart(fig)

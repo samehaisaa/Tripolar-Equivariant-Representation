@@ -45,7 +45,7 @@ def plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, 
         ))
 
     layout = go.Layout(
-        title="Superposition des lignes de niveau de la différence (en noir) et de la somme (en rouge) des potentiels géodésiques",
+        title="Superposition des lignes de niveau de la différence (en noir) et de la somme (en rouge)",
         scene=dict(xaxis=dict(title='X'), yaxis=dict(title='Y'), zaxis=dict(title='Z')),
         width=800, height=600
     )
