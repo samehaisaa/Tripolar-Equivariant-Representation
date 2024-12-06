@@ -2,10 +2,14 @@ import streamlit as st
 import plotly.graph_objects as go
 from mesh_processing.mesh_loader import load_obj_mesh
 from mesh_processing.geodesic_distances import compute_sum_of_distances
+
+from mesh_processing.geodesic_distances import compute_diff_of_distances
+
+
 from mesh_processing.visualization import plot_bipolar_contours
 
-def visualize_mesh(vertices, faces, sum_distances, seeds, target_distances):
-    fig = plot_bipolar_contours(vertices, faces, sum_distances, seeds, target_distances, tolerance=0.85)
+def visualize_mesh(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff):
+    fig = plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff, tolerance=0.85)
     return fig
 
 # Streamlit app starts here
@@ -25,12 +29,17 @@ if mesh_file is not None:
 
     # Compute sum of distances (geodesic calculation)
     sum_distances = compute_sum_of_distances(vertices, faces, *seeds)
+    diff_distances = compute_diff_of_distances(vertices, faces, *seeds)
+   
+    target_distances_sum_input = st.text_input("Les distances cibles pour les contours somme (e.g., 200,250,300)", "200,250,300,400,450")
+    target_distances_sum = list(map(int, target_distances_sum_input.split(",")))
 
-    target_distances_input = st.text_input("Les distances cibles pour les contours bipolaires (e.g., 200,250,300)", "200,250,300,400,450")
-    target_distances = list(map(int, target_distances_input.split(",")))
+    target_distances_diff_input = st.text_input("Les distances cibles pour les contours difference (e.g., 50,150,200)", "50,10,20,150,200")
+    target_distances_diff = list(map(int, target_distances_diff_input.split(",")))
+
 
     # Visualize the 3D mesh with geodesic contours
-    fig = visualize_mesh(vertices, faces, sum_distances, seeds, target_distances)
+    fig = visualize_mesh(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff)
 
     # Display the Plotly figure in Streamlit
     st.plotly_chart(fig)
