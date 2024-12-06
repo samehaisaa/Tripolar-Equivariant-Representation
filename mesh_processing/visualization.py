@@ -9,15 +9,15 @@ def plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, 
         i=faces[:, 0], j=faces[:, 1], k=faces[:, 2],
         intensity=sum_distances,
         colorscale='Viridis',
-        showscale=True,
-        opacity=0.8,showlegend=True
+        showscale=False,
+        opacity=0.8,showlegend=False
     )
     seed_markers = [
         go.Scatter3d(
             x=[vertices[seed][0]], y=[vertices[seed][1]], z=[vertices[seed][2]],
             mode='markers',
             marker=dict(size=10, color='blue', symbol='circle'),
-            name=f"Seed Point {i+1}",showlegend=True
+            name=f"Seed Point {i+1}",showlegend=False
         )
         for i, seed in enumerate(seeds)
     ]
@@ -45,7 +45,7 @@ def plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, 
         ))
 
     layout = go.Layout(
-        title="Bipolar Contours",
+        title="Superposition des lignes de niveau de la différence (en noir) et de la somme (en rouge) des potentiels géodésiques",
         scene=dict(xaxis=dict(title='X'), yaxis=dict(title='Y'), zaxis=dict(title='Z')),
         width=800, height=600
     )
