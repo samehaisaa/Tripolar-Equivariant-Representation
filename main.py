@@ -8,7 +8,6 @@ from mesh_processing.geodesic_distances import compute_diff_of_distances
 import random
 
 from mesh_processing.visualization import plot_bipolar_contours
-random_progress = random.randint(30, 45)
 
 camera = {
     'eye': {'x': 0, 'y': 0, 'z': 2.4},  # Position of the camera
@@ -37,11 +36,13 @@ target_distances_diff = list(map(int, target_distances_diff_input.split(",")))
 
 tolerance = st.slider("Tolérance pour les contours", min_value=0.0, max_value=1.0, value=0.85, step=0.01)
 loading_message = st.empty()
+random_progress = random.randint(30, 45)
+
 loading_message.text("Chargement et traitement du maillage...")
 
 # Proceed only if a file is uploaded
 if mesh_file is not None:
-    progress_bar = st.progress(0)  # Initialize progress bar
+    progress_bar = st.progress(random_progress)  # Initialize progress bar
     with st.empty():
         # Simulate processing time (if needed)
         
