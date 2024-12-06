@@ -34,5 +34,5 @@ def compute_diff_of_distances(vertices, faces, seed1, seed2, seed3):
     dist1 = compute_geodesic_distances(vertices, faces, seed1)
     dist2 = compute_geodesic_distances(vertices, faces, seed2)
     dist3 = compute_geodesic_distances(vertices, faces, seed3)
-    return np.abs((dist1 - (dist2 + dist3)))
+    return np.abs((dist1 - ((dist2 + dist3) )))
 
