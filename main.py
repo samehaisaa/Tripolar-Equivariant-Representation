@@ -8,8 +8,8 @@ from mesh_processing.geodesic_distances import compute_diff_of_distances
 
 from mesh_processing.visualization import plot_bipolar_contours
 
-def visualize_mesh(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff):
-    fig = plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff, tolerance=0.85)
+def visualize_mesh(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff,tolerance):
+    fig = plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff, tolerance)
     return fig
 
 # Streamlit app starts here
@@ -36,10 +36,11 @@ if mesh_file is not None:
 
     target_distances_diff_input = st.text_input("Les distances cibles pour les contours difference (e.g., 50,150,200)", "50,10,20,150,200")
     target_distances_diff = list(map(int, target_distances_diff_input.split(",")))
+    tolerance = st.slider("Tolérance pour les contours", min_value=0.0, max_value=1.0, value=0.85, step=0.01)
 
 
     # Visualize the 3D mesh with geodesic contours
-    fig = visualize_mesh(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff)
+    fig = visualize_mesh(vertices, faces, sum_distances,diff_distances, seeds, target_distances_sum,target_distances_diff,tolerance)
 
     # Display the Plotly figure in Streamlit
     st.plotly_chart(fig)
