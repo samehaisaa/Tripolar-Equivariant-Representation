@@ -36,7 +36,7 @@ target_distances_diff = list(map(int, target_distances_diff_input.split(",")))
 
 tolerance = st.slider("Tolérance pour les contours", min_value=0.0, max_value=1.0, value=0.85, step=0.01)
 loading_message = st.empty()
-random_progress = random.randint(30, 45)
+random_progress = random.randint(0, 15)
 
 loading_message.text("Chargement et traitement du maillage...")
 
