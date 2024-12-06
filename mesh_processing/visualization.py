@@ -16,7 +16,7 @@ def plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, 
         go.Scatter3d(
             x=[vertices[seed][0]], y=[vertices[seed][1]], z=[vertices[seed][2]],
             mode='markers',
-            marker=dict(size=10, color='blue', symbol='circle'),
+            marker=dict(size=6, color='blue', symbol='circle'),
             name=f"Seed Point {i+1}",showlegend=False
         )
         for i, seed in enumerate(seeds)
@@ -29,7 +29,7 @@ def plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, 
         contours.append(go.Scatter3d(
             x=selected_vertices[:, 0], y=selected_vertices[:, 1], z=selected_vertices[:, 2],
             mode='markers',
-            marker=dict(size=2, color='red', symbol='circle'),
+            marker=dict(size=1.3, color='red', symbol='circle'),
             name=f"Contour at {target}",showlegend=False
         ))
 
@@ -40,12 +40,12 @@ def plot_bipolar_contours(vertices, faces, sum_distances,diff_distances, seeds, 
         contours2.append(go.Scatter3d(
             x=selected_vertices[:, 0], y=selected_vertices[:, 1], z=selected_vertices[:, 2],
             mode='markers',
-            marker=dict(size=2, color='black', symbol='circle'),
+            marker=dict(size=1.7, color='black', symbol='circle'),
             name=f"Contour at {target}",showlegend=False
         ))
 
     layout = go.Layout(
-        title="Superposition des lignes de niveau de la différence (en noir) et de la somme (en rouge) des potentiels géodésiques",
+        title="Superposition des lignes de niveau de la différence (en noir) et de la somme (en rouge)",
         scene=dict(xaxis=dict(title='X'), yaxis=dict(title='Y'), zaxis=dict(title='Z')),
         width=800, height=600
     )
