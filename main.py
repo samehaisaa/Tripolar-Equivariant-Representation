@@ -75,11 +75,11 @@ if mesh_file is not None:
 
         progress_bar.progress(100)
         loading_message.text("Traitement terminé ! Affichage des résultats...")  # Update progress to 100% 
+	st.plotly_chart(fig)
+
         progress_bar.empty()     
         loading_message.empty()
 
 
 
 
-    # Display the Plotly figure in Streamlit
-st.plotly_chart(fig)
