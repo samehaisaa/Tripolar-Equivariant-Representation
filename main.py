@@ -5,8 +5,10 @@ from mesh_processing.geodesic_distances import compute_sum_of_distances
 import time
 from mesh_processing.geodesic_distances import compute_diff_of_distances
 
+import random
 
 from mesh_processing.visualization import plot_bipolar_contours
+random_progress = random.randint(30, 45)
 
 camera = {
     'eye': {'x': 0, 'y': 0, 'z': 2.4},  # Position of the camera
@@ -46,14 +48,14 @@ if mesh_file is not None:
         loading_message.text("Chargement du maillage ...")  # Update message
         vertices, faces = load_obj_mesh(mesh_file)
 	
-        progress_bar.progress(40)  # Update progress to 20%
+        progress_bar.progress(25+random_progress)  # Update progress to 20%
         loading_message.text("Extraction des lignes de niveau ...")  # Update message
 
 
         seeds = [13714, 22526, 22229]  # Replace with your desired indices
         # Compute sum of distances (geodesic calculation)
         sum_distances = compute_sum_of_distances(vertices, faces, *seeds)
-        progress_bar.progress(80)
+        progress_bar.progress(65+random_progress)
         loading_message.text("Génération des contours ...")
 
         diff_distances = compute_diff_of_distances(vertices, faces, *seeds)
@@ -71,15 +73,15 @@ if mesh_file is not None:
             dragmode='orbit',
             scene_dragmode="turntable"
         )
-        progress_bar.progress(90)
+        progress_bar.progress(70+random_progress)
 
         progress_bar.progress(100)
         loading_message.text("Traitement terminé ! Affichage des résultats...")  # Update progress to 100% 
-        st.plotly_chart(fig)
         progress_bar.empty()     
         loading_message.empty()
 
 
 
 
-
+    # Display the Plotly figure in Streamlit
+st.plotly_chart(fig)
