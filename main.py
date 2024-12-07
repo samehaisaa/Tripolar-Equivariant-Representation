@@ -30,7 +30,7 @@ st.title("Représentation tripolaire équivariante")
 
 # Allow the user to upload an OBJ file
 mesh_file = "./F0001_AN01WH_F3Dsur.obj"
-with st.expander("Paramètres des contours",expanded=True):
+with st.expander("Paramètres",expanded=True):
     target_distances_sum_input = st.text_input(
         "Distances cibles (somme, e.g., 200,275,250,300)", "200,225,250,275,250,300,320"
     )
