@@ -32,7 +32,7 @@ st.title("Représentation tripolaire équivariante")
 mesh_file = "./F0001_AN01WH_F3Dsur.obj"
 with st.expander("Paramètres des contours",expanded=True):
     target_distances_sum_input = st.text_input(
-        "Distances cibles (somme, e.g., 200,275,250,300)", "200,275,250,300"
+        "Distances cibles (somme, e.g., 200,275,250,300)", "200,225,250,275,250,300,320"
     )
     target_distances_sum = list(map(int, target_distances_sum_input.split(",")))
 
@@ -41,7 +41,7 @@ with st.expander("Paramètres des contours",expanded=True):
     )
     target_distances_diff = list(map(int, target_distances_diff_input.split(",")))
 
-    tolerance = st.slider("Tolérance pour les contours", min_value=0.0, max_value=2.0, value=0.85,step=0.01)
+    tolerance = st.slider("Tolérance pour les contours", min_value=0.0, max_value=1.0, value=0.85,step=0.01)
 loading_message = st.empty()
 random_progress = random.randint(0, 15)
 
@@ -92,4 +92,4 @@ if mesh_file is not None:
 
 
     # Display the Plotly figure in Streamlit
-st.plotly_chart(fig)
+	st.plotly_chart(fig)
