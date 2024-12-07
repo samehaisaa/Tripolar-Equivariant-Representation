@@ -92,4 +92,4 @@ if mesh_file is not None:
 
 
     # Display the Plotly figure in Streamlit
-	st.plotly_chart(fig)
+    st.plotly_chart(fig)
